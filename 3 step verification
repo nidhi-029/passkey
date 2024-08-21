@@ -1,0 +1,64 @@
+import getpass
+
+# Level 1: Textual Password Authentication
+def textual_password_auth():
+    # In a real system, this password would be securely hashed and stored.
+    stored_password = "SecurePassword123"
+    password_attempt = getpass.getpass("Enter your textual password: ")
+
+    if password_attempt == stored_password:
+        print("Textual Password Authentication Successful.")
+        return True
+    else:
+        print("Textual Password Authentication Failed.")
+        return False
+
+# Level 2: Graphical Password Authentication (Simulated)
+def graphical_password_auth():
+    # In a real system, this could involve selecting a sequence of images or clicking specific areas.
+    stored_pattern = [1, 3, 5, 7]  # Simulated pattern (e.g., a sequence of grid clicks)
+    print("Simulated Graphical Password Authentication.")
+    print("Enter the pattern as a sequence of numbers (e.g., 1, 3, 5, 7): ")
+    pattern_attempt = list(map(int, input().split()))
+
+    if pattern_attempt == stored_pattern:
+        print("Graphical Password Authentication Successful.")
+        return True
+    else:
+        print("Graphical Password Authentication Failed.")
+        return False
+
+# Level 3: Biometric Authentication (Simulated)
+def biometric_auth():
+    # Simulated biometric authentication (e.g., fingerprint scan, voice recognition).
+    # This is just a placeholder. In a real system, you'd interface with biometric hardware.
+    print("Simulated Biometric Authentication.")
+    print("Type 'scan' to simulate a successful biometric scan.")
+    biometric_attempt = input("Biometric scan: ")
+
+    if biometric_attempt.lower() == 'scan':
+        print("Biometric Authentication Successful.")
+        return True
+    else:
+        print("Biometric Authentication Failed.")
+        return False
+
+def three_level_password_system():
+    print("Welcome to the 3-Level Password System")
+    
+    if not textual_password_auth():
+        print("Access Denied.")
+        return
+    
+    if not graphical_password_auth():
+        print("Access Denied.")
+        return
+    
+    if not biometric_auth():
+        print("Access Denied.")
+        return
+    
+    print("Access Granted. Welcome!")
+
+if _name_ == "_main_":
+    three_level_password_system()
